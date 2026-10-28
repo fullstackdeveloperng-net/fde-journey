@@ -20,9 +20,23 @@ var request = new
 {
     model = "claude-sonnet-5-5",
     max_tokens = 1000,
-    system = """
+    // system = """
+    //     You extract claim details from customer messages.
+    //     Respond with ONLY a JSON object, no other text, in exactly this shape:
+    //     {
+    //       "policyNumber": string or null,
+    //       "incidentLocation": string or null,
+    //       "vehicle": string or null,
+    //       "damageDescription": string or null,
+    //       "injuries": boolean,
+    //       "policeReported": boolean,
+    //       "otherPartyPlate": string or null
+    //     }
+    //     Use null when information is missing. Never guess.
+    //     """,
+     system = """
         You extract claim details from customer messages.
-        Respond with ONLY a JSON object, no other text, in exactly this shape:
+        First write a short friendly note to the customer, then give the JSON object in exactly this shape:
         {
           "policyNumber": string or null,
           "incidentLocation": string or null,
